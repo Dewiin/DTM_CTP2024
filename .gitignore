@@ -1,9 +1,14 @@
 # Byte-compiled / optimized files
 __pycache__/
 *.py[cod]
+*.cache
 
 # C extensions
 *.so
+
+# Datasets
+datasets/
+runs/
 
 # Distribution / packaging
 .Python
@@ -38,4 +43,3 @@ build/
 *.bmp
 *.tiff
 *.gif
-output_image.jpg  # If you don't want to track output images
