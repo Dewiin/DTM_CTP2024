@@ -36,10 +36,3 @@ build/
 # Environment variables
 .env
 
-# Dlib and OpenCV specific (if any temporary files are created)
-*.png
-*.jpg
-*.jpeg
-*.bmp
-*.tiff
-*.gif
