@@ -1,0 +1,7 @@
+matplotlib==3.9.2
+numpy==1.26.4
+protobuf==5.28.3
+python-dotenv==1.0.1
+ultralytics==8.3.27
+google-generativeai==0.8.3
+streamlit==1.40.1
