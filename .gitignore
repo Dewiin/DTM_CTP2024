@@ -38,5 +38,4 @@ build/
 .env
 
 # Sample inputs
-sample_inputs
-
+sample_inputs/
