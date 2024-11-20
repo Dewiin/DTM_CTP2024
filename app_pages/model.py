@@ -4,8 +4,6 @@ import numpy as np
 import google.generativeai as genai
 from PIL import Image
 import cv2
-import os
-
 
 st.set_page_config(
   page_title='Welcome!',
@@ -18,19 +16,17 @@ IMG_SIZE = 320
 
 
 # Load YuNet face detection model
-current_dir = os.getcwd()
-yunet_path = os.path.join(current_dir, 'models', 'face_detection_yunet_2023mar.onnx')
-# yunet_path = 'models/face_detection_yunet_2023mar.onnx'
+yunet_path = 'models/face_detection_yunet_2023mar.onnx'
 yunet_face_detector = cv2.FaceDetectorYN_create(yunet_path, "", (IMG_SIZE, IMG_SIZE), score_threshold=0.5)
 
 
 # Load acne detection model
-yolo_path = os.path.join(current_dir, 'models', 'acne.pt')
+yolo_path = 'models/acne.pt'
 yolo_acne_model = YOLO(yolo_path)
 
 
 # No acne model
-no_acne_yolo_path = os.path.join(current_dir, 'models', 'no_acne_model.pt')
+no_acne_yolo_path = 'models/no_acne_model.pt'
 yolo_no_acne_model = YOLO(no_acne_yolo_path)
 
 

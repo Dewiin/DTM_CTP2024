@@ -1,5 +1,5 @@
 numpy==1.26.4
-opencv_python==4.10.0.84
+opencv-python-headless==4.10.0.84
 Pillow==11.0.0
 protobuf==5.28.3
 python-dotenv==1.0.1
