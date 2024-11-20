@@ -7,7 +7,8 @@ st.set_page_config(
 )
 
 
-st.markdown('<h1 style="text-align:center; margin-bottom:5rem; padding-top:0">Acne & Info</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align:center; padding:0">Acne & Info</h1>', unsafe_allow_html=True)
+st.markdown('<h6 style="text-align:center; margin-bottom:5rem; padding-top:0">Learn about different acne conditions</h6>', unsafe_allow_html=True)
 papules, pustules, nodules = st.columns(spec=3)
 cysts, blackheads, acne_scars = st.columns(spec=3, vertical_alignment='top')
     
