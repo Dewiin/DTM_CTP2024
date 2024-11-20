@@ -36,7 +36,8 @@ build/
 # Environment variables
 .blemish_env
 .env
-.streamlit
+.my_venv
+.streamlit/secrets.toml
 
 # Sample inputs
 sample_inputs/

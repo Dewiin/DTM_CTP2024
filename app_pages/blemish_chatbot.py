@@ -1,7 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
 import time
-import os
 
 st.set_page_config(
   page_icon='🤖'
