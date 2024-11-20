@@ -1,18 +1,18 @@
 import streamlit as st
 
 home_page = st.Page(
-  page='pages/model.py',
+  page='app_pages/model.py',
   title='Home',
   default=True
 )
 
 chatbot_page = st.Page(
-  page='pages/blemish_chatbot.py',
+  page='app_pages/blemish_chatbot.py',
   title='BlemishBot AI'
 )
 
 info_page = st.Page(
-  page='pages/acne_info.py',
+  page='app_pages/acne_info.py',
   title='Acne & Info'
 )
 
