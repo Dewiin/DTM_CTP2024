@@ -36,6 +36,7 @@ build/
 # Environment variables
 .blemish_env
 .env
+.streamlit
 
 # Sample inputs
 sample_inputs/

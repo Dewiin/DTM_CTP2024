@@ -35,7 +35,7 @@ yolo_no_acne_model = YOLO(no_acne_yolo_path)
 
 
 # Gemini model
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+GEMINI_API_KEY = st.secrets['GEMINI_API_KEY']
 genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 
