@@ -14,13 +14,12 @@ cysts, blackheads, acne_scars = st.columns(spec=3, vertical_alignment='top')
     
 
 with papules:
-  st.markdown('<h4 style="text-align:center;">Papules</h4', unsafe_allow_html=True)
-  with st.expander('', expanded=True):
-    col1, col2, col3 = st.columns([1,3,1])
-    with col2:
-      image = Image.open('acne_types_images/papules.webp')
-      st.image(image)
-
+  st.markdown('<h4 style="text-align:center; margin-bottom:2rem;">Papules</h4', unsafe_allow_html=True)
+  col1, col2, col3 = st.columns([1,3,1])
+  with col2:
+    image = Image.open('acne_types_images/papules.webp')
+    st.image(image)
+  with st.empty():
     st.write('''Papules are small, red, inflamed bumps on the skin. They occur when a hair follicle becomes clogged and
              irritated, often without visible pus. Papules feel firm to the touch and may be tender or sensitive.''')
     

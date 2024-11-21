@@ -1,4 +1,5 @@
 import cv2
+import time
 import streamlit as st
 from ultralytics import YOLO
 import numpy as np
@@ -8,8 +9,7 @@ from PIL import Image
 
 st.set_page_config(
   page_title='Welcome!',
-  page_icon='👋',
-  layout='wide'
+  page_icon='👋'
 )
 
 
@@ -124,33 +124,27 @@ def get_acne_treatments(acne_list):
 
 
 st.markdown('<h1 style="text-align:center; padding: 0">BlemishBot</h1>', unsafe_allow_html=True)
-st.markdown('<h6 style="text-align:center;">Upload an image and receive treatment suggestions.</h4>', unsafe_allow_html=True)
-col1, col2 = st.columns(2)
-
-detected_classes = []
-with col1:
-
-  uploaded_file = st.file_uploader('', type=['png', 'jpg', 'jpeg', 'webp'])
-
-  if uploaded_file:
-    left, center, right = st.columns([1,3,1])
-    with center:
-      st.image(uploaded_file)
-    padded_image = prepare_image(uploaded_file)
-    cropped_image = face_detection_crop(padded_image)
-    detected_classes = acne_detection(cropped_image)
-
-    # Display results
-    if detected_classes:
-      st.success("Detected Acne Types:")
-      for acne_type in detected_classes:
-          st.write(f"- {acne_type}")
-    else:
-      st.error("No acne types detected.")
+st.markdown('<h6 style="text-align:center; padding: 0">Upload an image and receive treatment suggestions.</h6>', unsafe_allow_html=True)
 
 
-with col2:
+uploaded_file = st.file_uploader('', type=['png', 'jpg', 'jpeg', 'webp'])
+
+if uploaded_file:
+  left, center, right = st.columns([1,3,1])
+  with center:
+    st.image(uploaded_file)
+  padded_image = prepare_image(uploaded_file)
+  cropped_image = face_detection_crop(padded_image)
+  detected_classes = acne_detection(cropped_image)
+
+  # Display results
   if detected_classes:
-    get_acne_treatments(detected_classes)
+    st.success("Detected Acne Types:")
+    for acne_type in detected_classes:
+        st.write(f"- {acne_type}")
+  else:
+    st.error("No acne types detected.")
+
+  get_acne_treatments(detected_classes)
   
 

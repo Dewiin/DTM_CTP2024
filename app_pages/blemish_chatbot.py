@@ -13,22 +13,25 @@ gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Title
 st.markdown('<h1 style="text-align: center; padding: 0"> BlemishAI</h1>', unsafe_allow_html=True)
-st.markdown('<h6 style="text-align: center;"> How can I help you?</h1>', unsafe_allow_html=True)
+st.markdown('<h6 style="text-align: center; padding-bottom: 1.5rem"> How can I help you? </h6>', unsafe_allow_html=True)
 
 
 # Gemini response
 def generate_response(user_input):
-  context = get_chat_history(st.session_state.chat_history)
+  try:
+    context = get_chat_history(st.session_state.chat_history)
 
-  prompt = f'''The following context is a conversation between you and a user: {context}.
-  Answer this new input: {user_input}. You are designed for skincare advice. 
-  Respectfully decline questions that are off-topic and unrelated to skincare. 
-  Do not say anything offensive and always respond respectfully.'''
-  response = gemini_model.generate_content(prompt, stream=True)
+    prompt = f'''The following context is a conversation between you and a user: {context}.
+    Answer this new input: {user_input}, add some emojis. You are designed for skincare advice. 
+    Respectfully decline questions that are off-topic and unrelated to skincare. 
+    Do not say anything offensive and always respond respectfully.'''
+    response = gemini_model.generate_content(prompt, stream=True)
 
-  for chunk in response:
-    yield chunk.text
-    time.sleep(0.05)
+    for chunk in response:
+      yield chunk.text
+      time.sleep(0.05)
+  except:
+    st.error("There was an error processing your response.")
 
 def get_chat_history(history):
   context = ''
@@ -45,25 +48,39 @@ if 'chat_history' not in st.session_state:
   st.session_state.chat_history = []
 
 
+# Prevent typing when a response is generating
+if 'is_generating' not in st.session_state:
+  st.session_state.is_generating = False
+
+
 # Display chat messages from history on app rerun
 for chat in st.session_state.chat_history:
   with st.chat_message(chat['role']):
     st.markdown(chat['content'])
 
 
-user_input = st.chat_input('E.g., How can I treat acne scars?')
-if user_input:
-  # Add user input to chat history
-  st.session_state.chat_history.append({'role': 'user', 'content': user_input})
-  with st.chat_message('user'):
+user_input = st.chat_input('E.g., How can I treat acne scars?', disabled=st.session_state.is_generating)
+if user_input or st.session_state.is_generating:
+  if not st.session_state.is_generating:
+    # Add user input to chat history
     st.session_state.is_generating = True 
-    st.markdown(user_input)
+    st.session_state.chat_history.append({'role': 'user', 'content': user_input})
+    with st.chat_message('user'):
+      st.markdown(user_input)
+      st.rerun()
 
   with st.chat_message('assistant'):
-    response = st.write_stream(generate_response(user_input))
-    # Add chat response to chat history
-    st.session_state.chat_history.append({'role': 'assistant', 'content': response})
     st.session_state.is_generating = False
+    response = st.write_stream(generate_response(user_input))
+    # Add chat response to chat history 
+    st.session_state.chat_history.append({'role': 'assistant', 'content': response})
+
+
+  # Limit chat history to the last 10 messages
+  st.session_state.chat_history = st.session_state.chat_history[-10:]
+  st.rerun()
+
+
 
 
 
