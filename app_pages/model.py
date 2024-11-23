@@ -37,6 +37,18 @@ genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 
 
+def welcome_stream():
+  welcome = 'Upload an image and receive treatment suggestions.'
+  for word in welcome.split():
+    yield word + ' '
+    time.sleep(0.1)
+
+def show_welcome():
+  col1, col2, col3 = st.columns([1,3,1])
+  with col2:
+    st.write_stream(welcome_stream())
+
+
 def prepare_image(uploaded_file):
   # Convert UploadedFile object to numpy array
   image = Image.open(uploaded_file)
@@ -124,7 +136,11 @@ def get_acne_treatments(acne_list):
 
 
 st.markdown('<h1 style="text-align:center; padding: 0">BlemishBot</h1>', unsafe_allow_html=True)
-st.markdown('<h6 style="text-align:center; padding: 0">Upload an image and receive treatment suggestions.</h6>', unsafe_allow_html=True)
+if 'model_welcome_executed' not in st.session_state:
+  show_welcome()
+  st.session_state['model_welcome_executed'] = True
+else:
+  st.markdown('<h6 style="text-align:center; padding: 0">Upload an image and receive treatment suggestions.</h6>', unsafe_allow_html=True)
 
 
 uploaded_file = st.file_uploader('', type=['png', 'jpg', 'jpeg', 'webp'])

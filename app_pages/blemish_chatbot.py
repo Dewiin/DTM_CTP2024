@@ -10,10 +10,26 @@ GEMINI_API_KEY = st.secrets['GEMINI_API_KEY']
 genai.configure(api_key=GEMINI_API_KEY)
 gemini_model = genai.GenerativeModel('gemini-1.5-flash')
 
+def welcome_stream():
+  welcome = 'How can I help you?'
+  for word in welcome.split():
+    yield word + ' '
+    time.sleep(0.1)
+
+def show_welcome():
+  col1, col2, col3 = st.columns([1.85,2,1])
+  with col2:
+    st.write_stream(welcome_stream())
 
 # Title
 st.markdown('<h1 style="text-align: center; padding: 0"> BlemishAI</h1>', unsafe_allow_html=True)
-st.markdown('<h6 style="text-align: center; padding-bottom: 1.5rem"> How can I help you? </h6>', unsafe_allow_html=True)
+
+if "chatbot_welcome_executed" not in st.session_state:
+  show_welcome()
+  st.session_state["chatbot_welcome_executed"] = True
+else:
+  st.markdown('<h6 style="text-align: center;"> How can I help you? </h6>', unsafe_allow_html=True)
+
 
 
 # Gemini response

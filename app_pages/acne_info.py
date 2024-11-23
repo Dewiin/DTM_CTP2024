@@ -1,25 +1,42 @@
 import streamlit as st
 from PIL import Image
+import time
 
 st.set_page_config(
   page_icon='📖',
-  layout='wide'
 )
+
+def welcome_stream():
+  welcome = 'Learn about different acne conditions.'
+  for word in welcome.split():
+    yield word + ' '
+    time.sleep(0.1)
+
+def show_welcome():
+  col1, col2, col3 = st.columns([1.2,2,1])
+  with col2:
+    st.write_stream(welcome_stream())
 
 
 st.markdown('<h1 style="text-align:center; padding:0">Acne & Info</h1>', unsafe_allow_html=True)
-st.markdown('<h6 style="text-align:center; margin-bottom:5rem; padding-top:0">Learn about different acne conditions</h6>', unsafe_allow_html=True)
+
+if "info_welcome_executed" not in st.session_state:
+  show_welcome()
+  st.session_state["info_welcome_executed"] = True
+else:
+  st.markdown('<h6 style="text-align:center;">Learn about different acne conditions</h6>', unsafe_allow_html=True)
+
+
 papules, pustules, nodules = st.columns(spec=3)
 cysts, blackheads, acne_scars = st.columns(spec=3, vertical_alignment='top')
-    
-
 with papules:
-  st.markdown('<h4 style="text-align:center; margin-bottom:2rem;">Papules</h4', unsafe_allow_html=True)
-  col1, col2, col3 = st.columns([1,3,1])
-  with col2:
-    image = Image.open('acne_types_images/papules.webp')
-    st.image(image)
-  with st.empty():
+  st.markdown('<h4 style="text-align:center;">Papules</h4', unsafe_allow_html=True)
+  with st.expander('', expanded=True):
+    col1, col2, col3 = st.columns([1,3,1])
+    with col2:
+      image = Image.open('acne_types_images/papules.webp')
+      st.image(image)
+
     st.write('''Papules are small, red, inflamed bumps on the skin. They occur when a hair follicle becomes clogged and
              irritated, often without visible pus. Papules feel firm to the touch and may be tender or sensitive.''')
     
