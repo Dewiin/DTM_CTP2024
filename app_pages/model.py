@@ -44,7 +44,7 @@ def welcome_stream():
     time.sleep(0.1)
 
 def show_welcome():
-  col1, col2, col3 = st.columns([1,3,1])
+  col1, col2, col3 = st.columns([1.1,3,1])
   with col2:
     st.write_stream(welcome_stream())
 
@@ -127,9 +127,12 @@ def acne_detection(cropped_image):
 
 
 def get_acne_treatments(acne_list):
+  context = ''
   for acne in acne_list:
-    prompt = f'Suggest treatment options for acne type: {acne}. Provide clear steps and product recommendations. Try to keep your response within 200 words.'
+    prompt = f'''Suggest treatment options for acne type: {acne}. Provide clear steps and product recommendations. Try to keep the
+    response within 5 bullet points and within 100 words.'''
     response = gemini_model.generate_content(prompt)
+    context += (response.text + '\n')
 
     with st.expander(f'Treatment for {acne}:'):
       st.markdown(response.text)
@@ -142,12 +145,18 @@ if 'model_welcome_executed' not in st.session_state:
 else:
   st.markdown('<h6 style="text-align:center; padding: 0">Upload an image and receive treatment suggestions.</h6>', unsafe_allow_html=True)
 
+image = Image.open('page_images/homepage.png')
+
+left,center,right = st.columns([0.8,2,1])
+with center:
+  st.image(image)
+
 
 uploaded_file = st.file_uploader('', type=['png', 'jpg', 'jpeg', 'webp'])
 
 if uploaded_file:
-  left, center, right = st.columns([1,3,1])
-  with center:
+  col1, col2 = st.columns([1,1])
+  with col1:
     st.image(uploaded_file)
   padded_image = prepare_image(uploaded_file)
   cropped_image = face_detection_crop(padded_image)
@@ -155,12 +164,14 @@ if uploaded_file:
 
   # Display results
   if detected_classes:
-    st.success("Detected Acne Types:")
-    for acne_type in detected_classes:
+    with col2:
+      st.success("Detected Acne Types:")
+      for acne_type in detected_classes:
         st.write(f"- {acne_type}")
   else:
     st.error("No acne types detected.")
 
-  get_acne_treatments(detected_classes)
+  with st.spinner('Getting treatments...'):
+    get_acne_treatments(detected_classes)
   
 

@@ -34,7 +34,7 @@ with papules:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/papules.webp')
+      image = Image.open('page_images/papules.webp')
       st.image(image)
 
     st.write('''Papules are small, red, inflamed bumps on the skin. They occur when a hair follicle becomes clogged and
@@ -46,7 +46,7 @@ with pustules:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/pustules.webp')
+      image = Image.open('page_images/pustules.webp')
       st.image(image)
 
     st.write('''Pustules are similar to papules but contain pus at their centers, appearing as white or yellow bumps surrounded 
@@ -58,7 +58,7 @@ with nodules:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/nodules.webp')
+      image = Image.open('page_images/nodules.webp')
       st.image(image)
 
     st.write('''Nodules are large, hard, and painful lumps that form deep beneath the skin's surface. They result from severe inflammation 
@@ -70,7 +70,7 @@ with cysts:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/cysts.webp')
+      image = Image.open('page_images/cysts.webp')
       st.image(image)
     st.write('''Cysts are the most severe form of acne, characterized by large, soft, pus-filled lesions that develop deep under the skin.
              They are often painful and can lead to significant scarring if not properly treated by a dermatologist.''')
@@ -81,7 +81,7 @@ with blackheads:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/blackheads.webp')
+      image = Image.open('page_images/blackheads.webp')
       st.image(image)
     st.write('''Blackheads are non-inflammatory acne lesions that appear as small, dark spots. They form when hair follicles 
              are clogged with oil and dead skin cells, but the pore remains open, allowing oxidation to turn the clog black.''')
@@ -92,7 +92,7 @@ with acne_scars:
   with st.expander('', expanded=True):
     col1, col2, col3 = st.columns([1,3,1])
     with col2:
-      image = Image.open('acne_types_images/acne_scars.jpg')
+      image = Image.open('page_images/acne_scars.jpg')
       image = image.resize([652,443])
       st.image(image)
     st.markdown('''Acne scars are the long-term effects of severe or improperly treated acne. They can appear as:<br>
