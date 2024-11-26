@@ -1,6 +1,9 @@
 import streamlit as st
 from PIL import Image
 
+image = Image.open('page_images/homepage.png')
+st.logo(image, size='large')
+
 model_page = st.Page(
   page='app_pages/model.py',
   icon='💥',
