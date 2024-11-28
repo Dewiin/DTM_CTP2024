@@ -7,6 +7,33 @@
   </a>
 </div>
 
+<details open>
+<summary>Table of Contents</summary>
+<ol>
+  <li>
+    <a href="#introduction">Introduction</a>
+  </li>
+  <li>
+    <a href="#features">Features</a>
+    <ul>
+      <li>
+        <a href="#built-with">Built With</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="#getting-started">Getting Started</a>
+    <ul>
+      <li><a href="#prerequisites">Prerequisites</a></li>
+      <li><a href="#setup">Setup</a></li>
+    </ul>
+  </li>
+  <li><a href="#demo">Demo</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#license">License</a></li>
+</ol>
+</details>
+
 ## Introduction
 BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists.
 <p align="right"><a href="#readme-top">Back to top</a></p>
