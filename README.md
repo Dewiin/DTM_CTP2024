@@ -1,8 +1,14 @@
+<a name="readme-top"></a>
+
 # [BlemishBot: AI-Powered Acne Detection](https://blemishbot.streamlit.app/)
-![Logo](page_images/homepage.png)
+<div align="center">
+  <a href ="https://blemishbot.streamlit.app/">
+    <img src="page_images/homepage.png">
+  </a>
+</div>
 
 ## Introduction
-BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists. 
+BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists. <br><br><br>
 
 ## Features
 * **Image-Based Detection:** Detects and classifies 6 acne types: 
