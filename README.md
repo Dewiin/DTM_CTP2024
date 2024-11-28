@@ -8,7 +8,8 @@
 </div>
 
 ## Introduction
-BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists. <br><br><br>
+BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists.
+<p align="right"><a href="#readme-top">Back to top</a></p>
 
 ## Features
 * **Image-Based Detection:** Detects and classifies 6 acne types: 
@@ -30,6 +31,9 @@ BlemishBot aims to provide fast treatment suggestions for various acne condition
 [![Streamlit][Streamlit]][Streamlit-url]
 [![Pillow][Pillow]][Pillow-url]
 [![Google Gemini][Gemini]][Gemini-url]
+
+<p align="right"><a href="#readme-top">Back to top</a></p>
+
 
 ## Getting Started
 To get a local copy of BlemishBot up and running locally follow these steps:  
@@ -93,8 +97,13 @@ To get a local copy of BlemishBot up and running locally follow these steps:
     - Upload an image to detect and classify acne.
     - Interact with the chatbot for skincare advice.
 
+<p align="right"><a href="#readme-top">Back to top</a></p>
+
+
 ## Demo
 Streamlit Web Application
+
+<p align="right"><a href="#readme-top">Back to top</a></p>
 
 
 ## Contributing
@@ -114,6 +123,8 @@ We like open-source and want to develop practical applications for real-world pr
 3. Commit your changes 
 4. Push to the branch 
 5. Submit a pull request
+
+<p align="right"><a href="#readme-top">Back to top</a></p>
 
 
 ## License
