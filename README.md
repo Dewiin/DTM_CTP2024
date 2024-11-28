@@ -102,6 +102,7 @@ To get a local copy of BlemishBot up and running locally follow these steps:
 
 ## Demo
 Streamlit Web Application
+https://github.com/user-attachments/assets/0b5a40f5-a56c-4433-9cc0-aa466b3c900c
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
 
