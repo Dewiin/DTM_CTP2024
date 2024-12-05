@@ -130,7 +130,7 @@ def get_acne_treatments(acne_list):
   context = ''
   for acne in acne_list:
     prompt = f'''Suggest treatment options for acne type: {acne}. Provide clear steps and product recommendations. Try to keep the
-    response within 5 bullet points and within 100 words.'''
+    response within 5 bullet points and within 100 words. Add some emojis.'''
     response = gemini_model.generate_content(prompt)
     context += (response.text + '\n')
 
