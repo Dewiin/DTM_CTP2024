@@ -1,10 +1,14 @@
 import streamlit as st
 import google.generativeai as genai
+from PIL import Image
 import time
 
 st.set_page_config(
   page_icon='🤖'
 )
+
+bot_icon = Image.open('page_images/bot_icon.png')
+user_icon = Image.open('page_images/user_icon.png')
 
 GEMINI_API_KEY = st.secrets['GEMINI_API_KEY']
 genai.configure(api_key=GEMINI_API_KEY)
@@ -22,14 +26,13 @@ def show_welcome():
     st.write_stream(welcome_stream())
 
 # Title
-st.markdown('<h1 style="text-align: center; padding: 0"> BlemishAI</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align: center; padding: 0"> 💬 BlemishAI 💬</h1>', unsafe_allow_html=True)
 
 if "chatbot_welcome_executed" not in st.session_state:
   show_welcome()
   st.session_state["chatbot_welcome_executed"] = True
 else:
   st.markdown('<h6 style="text-align: center;"> How can I help you? </h6>', unsafe_allow_html=True)
-
 
 
 # Gemini response
@@ -71,7 +74,11 @@ if 'is_generating' not in st.session_state:
 
 # Display chat messages from history on app rerun
 for chat in st.session_state.chat_history:
-  with st.chat_message(chat['role']):
+  avatar = Image.open('page_images/bot_icon.png')
+  if chat['role'] == 'user':
+    avatar = Image.open('page_images/user_icon.png')
+
+  with st.chat_message(chat['role'], avatar=avatar):
     st.markdown(chat['content'])
 
 
@@ -81,11 +88,11 @@ if user_input or st.session_state.is_generating:
     # Add user input to chat history
     st.session_state.is_generating = True 
     st.session_state.chat_history.append({'role': 'user', 'content': user_input})
-    with st.chat_message('user'):
+    with st.chat_message('user', avatar=user_icon):
       st.markdown(user_input)
       st.rerun()
 
-  with st.chat_message('assistant'):
+  with st.chat_message('assistant', avatar=bot_icon):
     st.session_state.is_generating = False
     response = st.write_stream(generate_response(user_input))
     # Add chat response to chat history 

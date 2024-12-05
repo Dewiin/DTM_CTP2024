@@ -138,7 +138,7 @@ def get_acne_treatments(acne_list):
       st.markdown(response.text)
 
 
-st.markdown('<h1 style="text-align:center; padding: 0">BlemishBot</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align:center; padding: 0">💥 BlemishBot 💥</h1>', unsafe_allow_html=True)
 if 'model_welcome_executed' not in st.session_state:
   show_welcome()
   st.session_state['model_welcome_executed'] = True

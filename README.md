@@ -1,11 +1,15 @@
 <a name="readme-top"></a>
 
-# [BlemishBot: AI-Powered Acne Detection](https://blemishbot.streamlit.app/)
-<div align="center">
+# [BlemishBot](https://blemishbot.streamlit.app/)
+<!-- <div align="center">
   <a href ="https://blemishbot.streamlit.app/">
     <img src="page_images/readmeLogo.png">
   </a>
-</div>
+</div> -->
+<div style='display:flex; align-items:center'>
+  <img src="page_images/homepage.png" alt='logo' width=200>
+  <p style='font-size:32px; font-weight: 600'>AI-Powered Acne Detection</p>
+</div> <br>
 
 <details open>
 <summary>Table of Contents</summary>
@@ -36,6 +40,11 @@
 
 ## Introduction
 BlemishBot aims to provide fast treatment suggestions for various acne conditions. We want people to gain clarity about their skin conditions, and we want them to get a general understanding of what treatments they can expect to start using. BlemishBot is **NOT** perfectly accurate, and it is **NOT** intended to replace professional consultations. For transparency, we actively encourage users to seek professional treatment from dermatologists.
+
+### Model Workflow
+<div align="center">
+  <img src="page_images/flowchart.png" alt='flowchart'>
+</div> <br>
 <p align="right"><a href="#readme-top">Back to top</a></p>
 
 ## Features

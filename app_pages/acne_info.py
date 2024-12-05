@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-st.markdown('<h1 style="text-align:center; padding:0">Acne & Info</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align:center; padding:0">📖 Acne & Info 📖</h1>', unsafe_allow_html=True)
 st.markdown('<h6 style="text-align:center; padding:0">Read About Skin Conditions</h6>', unsafe_allow_html=True)
 
 # Define image paths and descriptions
