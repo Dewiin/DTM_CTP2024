@@ -2,9 +2,9 @@
 
 # [BlemishBot](https://blemishbot.streamlit.app/)
 
-<div style='text-align:center'>
+<div align="center">
   <img src="page_images/homepage.png" alt='logo' width=200>
-  <p style='font-size:32px; font-weight: 600'>AI-Powered Acne Detection</p>
+  <h1>AI-Powered Acne Detection</p>
 </div> <br>
 
 <details open>
