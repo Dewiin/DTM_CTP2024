@@ -169,7 +169,7 @@ if uploaded_file:
       for acne_type in detected_classes:
         st.write(f"- {acne_type}")
   else:
-    st.error("No acne types detected.")
+    st.success("We detected clear skin! You do not have acne 😊")
 
   with st.spinner('Getting treatments...'):
     get_acne_treatments(detected_classes)

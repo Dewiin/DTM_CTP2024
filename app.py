@@ -23,11 +23,6 @@ info_page = st.Page(
   title='Acne & Info'
 )
 
-another_test = st.Page(
-  page='app_pages/fun.py',
-  icon='📖',
-  title='fun'
-)
-pg = st.navigation(pages=[model_page, chatbot_page, info_page, another_test])
+pg = st.navigation(pages=[model_page, chatbot_page, info_page])
 
 pg.run()
