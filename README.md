@@ -1,12 +1,8 @@
 <a name="readme-top"></a>
 
 # [BlemishBot](https://blemishbot.streamlit.app/)
-<!-- <div align="center">
-  <a href ="https://blemishbot.streamlit.app/">
-    <img src="page_images/readmeLogo.png">
-  </a>
-</div> -->
-<div style='display:flex; align-items:center'>
+
+<div style='text-align:center'>
   <img src="page_images/homepage.png" alt='logo' width=200>
   <p style='font-size:32px; font-weight: 600'>AI-Powered Acne Detection</p>
 </div> <br>
@@ -208,6 +204,6 @@ SOFTWARE.
 [Pillow]: https://img.shields.io/badge/pillow-000000?style=for-the-badge&logo=pillow
 [Pillow-url]: https://pillow.readthedocs.io/en/stable/
 
-[Gemini]: https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff
+[Gemini]: https://img.shields.io/badge/Google%20Gemini-886FBF?style=for-the-badge&logo=googlegemini&logoColor=fff
 [Gemini-url]: https://gemini.google.com/app
 
