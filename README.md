@@ -3,7 +3,7 @@
 # [BlemishBot](https://blemishbot.streamlit.app/)
 
 <div align="center">
-  <img src="page_images/homepage.png" alt='logo' width=200>
+  <img src="page_images/BlemishBotLogo.png" alt='logo' width=200>
   <h1>AI-Powered Acne Detection</p>
 </div> <br>
 
