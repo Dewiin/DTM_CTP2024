@@ -26,7 +26,7 @@ def show_welcome():
     st.write_stream(welcome_stream())
 
 # Title
-st.markdown('<h1 style="text-align: center; padding: 0"> 💬 BlemishAI 💬</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align: center; padding: 0"> BlemishAI </h1>', unsafe_allow_html=True)
 
 if "chatbot_welcome_executed" not in st.session_state:
   show_welcome()

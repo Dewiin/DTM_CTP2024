@@ -127,18 +127,48 @@ def acne_detection(cropped_image):
 
 
 def get_acne_treatments(acne_list):
-  context = ''
-  for acne in acne_list:
-    prompt = f'''Suggest treatment options for acne type: {acne}. Provide clear steps and product recommendations. Try to keep the
-    response within 5 bullet points and within 100 words. Add some emojis.'''
-    response = gemini_model.generate_content(prompt)
-    context += (response.text + '\n')
+  acne = ', '.join(acne_list)
+  prompt = f'''Suggest treatment options for all these acne types: {acne}. Provide clear steps and product recommendations. Try to keep the
+  response within 5 bullet points and within 100 words. Add some emojis.'''
+  response = gemini_model.generate_content(prompt, stream=True)
 
-    with st.expander(f'Treatment for {acne}:'):
-      st.markdown(response.text)
+  for chunk in response:
+    yield chunk.text
+    time.sleep(1)
 
 
-st.markdown('<h1 style="text-align:center; padding: 0">💥 BlemishBot 💥</h1>', unsafe_allow_html=True)
+def clear_treatments():
+  prompt = f'''I have clear skin. How can I maintain this and keep my skin healthy and clear? Try to keep the response within
+  5 bullet points and within 100 words. Add some emojis.'''
+  response = gemini_model.generate_content(prompt, stream=True)
+
+  for chunk in response:
+    yield chunk.text
+    time.sleep(1)
+
+
+def get_spend(routine):
+  prompt = f'''I have these acne conditions and I want to buy OTC products according to these recommendations: {routine}. How much money can 
+  I expect to spend in USD? I just want to see bullet points of how much I'm spending for each product. Do not return too many words.'''
+  response = gemini_model.generate_content(prompt)
+  
+  with st.expander('How much might you spend?'):
+    st.markdown(response.text)
+
+
+page_bg_img = f'''
+<style>
+
+[data-testid='stFileUploaderDropzone'] {{
+background-color: rgba(0,0,0,0);
+}}
+
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+st.markdown('<h1 style="text-align:center; padding: 0"> BlemishBot </h1>', unsafe_allow_html=True)
 if 'model_welcome_executed' not in st.session_state:
   show_welcome()
   st.session_state['model_welcome_executed'] = True
@@ -150,8 +180,6 @@ image = Image.open('page_images/homepage.png')
 left,center,right = st.columns([0.8,2,1])
 with center:
   st.image(image)
-
-
 uploaded_file = st.file_uploader('', type=['png', 'jpg', 'jpeg', 'webp'])
 
 if uploaded_file:
@@ -164,14 +192,18 @@ if uploaded_file:
 
   # Display results
   if detected_classes:
-    with col2:
-      st.success("Detected Acne Types:")
-      for acne_type in detected_classes:
-        st.write(f"- {acne_type}")
+    with st.spinner('Analyzing...'):
+      with col2:
+        time.sleep(1.5)
+        for acne_type in detected_classes:
+          time.sleep(0.5)
+          st.write(f"- {acne_type}")
+
+    st.success("Possible Solutions:")
+    with st.spinner('Getting treatments...'):
+      response = st.write_stream(get_acne_treatments(detected_classes))
+      get_spend(response)
   else:
-    st.success("We detected clear skin! You do not have acne 😊")
-
-  with st.spinner('Getting treatments...'):
-    get_acne_treatments(detected_classes)
-  
-
+    st.success("We detected clear skin! Here's how you can keep your skin healthy 😊")
+    st.write_stream(clear_treatments())
+    
