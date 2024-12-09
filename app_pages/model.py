@@ -202,6 +202,8 @@ if uploaded_file:
     st.success("Possible Solutions:")
     with st.spinner('Getting treatments...'):
       response = st.write_stream(get_acne_treatments(detected_classes))
+    
+    with st.spinner('Calculating price ranges...'):
       get_spend(response)
   else:
     st.success("We detected clear skin! Here's how you can keep your skin healthy 😊")
