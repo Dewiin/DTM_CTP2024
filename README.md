@@ -4,7 +4,7 @@
 
 <div align="center">
   <img src="page_images/BlemishBotLogo.png" alt='logo' width=200>
-  <h1>AI-Powered Acne Detection</p>
+  <h1>AI-Powered Acne Detection</h1>
 </div> <br>
 
 <details open>
